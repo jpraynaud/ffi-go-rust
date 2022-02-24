@@ -12,14 +12,22 @@ env:
 jobs:
 
   build:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Go
+    - name: Set up Go ${{ matrix.os }}
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
 
-    - name: Build
+    - name: Build ${{ matrix.os }}
       run: make
+      
+    - uses: actions/upload-artifact@v2
+      with:
+        name: go-main-${{ matrix.os }}
+        path: bin/go-main
