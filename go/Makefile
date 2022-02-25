@@ -8,7 +8,7 @@ CARGO = cd rust && cargo
 all: version mod test build
 
 build:
-	${GO} build -a -ldflags="-v -s" -o ${GO_BINARY_DEST} ${GO_MAIN_SRC}
+	${GO} build -a -ldflags="-v -s -w" -o ${GO_BINARY_DEST} ${GO_MAIN_SRC}
 
 run:
 	${GO} run ${GO_MAIN_SRC}
