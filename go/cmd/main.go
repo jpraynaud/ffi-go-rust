@@ -7,7 +7,15 @@ package main
 #include "./rustlib.h"
 */
 import "C"
+import "fmt"
 
 func main() {
+	// 1 - Hello
 	C.hello()
+
+	// 2 - Addition
+	x := C.uint32_t(10)
+	y := C.uint32_t(100)
+	add := uint(C.addition(x, y))
+	fmt.Printf("Addition=%d\r\n", add)
 }
